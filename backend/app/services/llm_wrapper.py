@@ -14,7 +14,7 @@ transcript_dir = home_dir / "transcripts"
 custom_model_dir = model_dir / model_name
 prompt_dir = home_dir / "data" / "prompts"
 
-api_key = "AIzaSyDX6Emlyb17V0z-0dfpF8VAlX7VYzuQ088"
+api_key = "YOUR_API_KEY"  # Replace with your actual API key
 
 
 def read_transcript(transcript_name: str) -> str:
