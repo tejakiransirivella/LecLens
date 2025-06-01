@@ -12,3 +12,10 @@ python-dotenv
 flask
 sentence-transformers
 flask-cors
+langchain
+langsmith
+faiss-cpu
+python-dotenv
+langchain-google-genai
+langchain-community
+gunicorn

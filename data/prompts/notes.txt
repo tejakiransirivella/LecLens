@@ -11,3 +11,4 @@ Please structure the notes with clear headings, bullet points where necessary, a
 3. Include key details, definitions, and examples where relevant.
 4. Ensure the notes are detailed but concise enough to fit into a document that will be converted into a PDF.
 5. Present the notes in a clear and readable format, suitable for downloading as a PDF.
+6. Avoid usage of any Markdown syntax. don't use *, **, # and ##. Instead use numbering bullets.

@@ -15,4 +15,4 @@ app.register_blueprint(quiz_bp)
 app.register_blueprint(notes_bp)
 
 if __name__ == '__main__':
-    app.run(debug=False)
+    app.run(debug=True)

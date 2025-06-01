@@ -1,6 +1,7 @@
 from flask import Blueprint, request, jsonify
 from backend.app.services import llm_wrapper
 from backend.app.api.cache import Cache
+from backend.app.api.user import User
 
 quiz_bp = Blueprint('quiz', __name__)
 
@@ -14,7 +15,7 @@ def get_quiz():
         return jsonify({"error": "Missing session ID"}), 400
 
     # Retrieve transcript from cache
-    user = Cache.get_user_cache(session_id)
+    user:User = Cache.get_user_cache(session_id)
     transcript = user.get_transcript()
 
     quiz = llm_wrapper.generate_quiz(transcript,difficulty_level)

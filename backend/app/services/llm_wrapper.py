@@ -14,7 +14,7 @@ transcript_dir = home_dir / "transcripts"
 custom_model_dir = model_dir / model_name
 prompt_dir = home_dir / "data" / "prompts"
 
-api_key = "YOUR_API_KEY"  # Replace with your actual API key
+api_key = "AIzaSyAP41uEb55JOMxwNIHwIvy1eMEarNjrzeY"  # Replace with your actual API key
 
 
 def read_transcript(transcript_name: str) -> str:
@@ -59,11 +59,13 @@ def answer_user_query(transcript: str, question: str) -> str:
 
 
 def generate_notes(transcript: str) -> str:
+    print("Generating notes")
     genai.configure(api_key=api_key)
     model = genai.GenerativeModel("gemini-2.0-flash")
     prompt = get_prompt(prompt_dir / "notes.txt", transcript, "")
     response = model.generate_content(prompt)
     response = extract_text(response)
+    print("Notes generated")
     return response
 
 def generate_quiz(transcript:str, difficulty_level:str) -> list:

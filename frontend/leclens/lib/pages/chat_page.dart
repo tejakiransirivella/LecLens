@@ -430,6 +430,7 @@ class _ChatPageState extends State<ChatPage> {
       if (response.statusCode == 200) {
         final data = jsonDecode(response.body);
         final String notes = data['notes'] ?? '';
+        final noteLines = notes.split('\n');
 
         // 1) Build PDF
         final pdf = pw.Document();
@@ -446,10 +447,11 @@ class _ChatPageState extends State<ChatPage> {
                   ),
                 ),
                 pw.SizedBox(height: 10),
-                pw.Text(
-                  notes,
-                  style: const pw.TextStyle(fontSize: 12),
-                ),
+                ...noteLines.map((line) => pw.Text(line, style: const pw.TextStyle(fontSize: 12))),
+                // pw.Text(
+                //   notes,
+                //   style: const pw.TextStyle(fontSize: 12),
+                // ),
               ];
             },
           ),
@@ -562,7 +564,7 @@ class _ChatPageState extends State<ChatPage> {
                                   child: TextField(
                                     controller: _videoLinkController,
                                     decoration: const InputDecoration(
-                                      hintText: "Enter a YouTube or local file path",
+                                      labelText: "Enter a YouTube or local file path",
                                     ),
                                   ),
                                 ),
@@ -680,7 +682,7 @@ class _ChatPageState extends State<ChatPage> {
                                   child: TextField(
                                     controller: _chatController,
                                     decoration: const InputDecoration(
-                                      hintText: "Ask a question...",
+                                      labelText: "Ask a question...",
                                     ),
                                     onSubmitted: (_) => _sendChatMessage(),
                                   ),
