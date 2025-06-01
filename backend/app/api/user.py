@@ -5,6 +5,8 @@ class User:
         self.transcript_timestamps = None
         self.transcript = None
         self.conversations = []
+        self.vector_store = None
+        self.notes = None
 
     def get_sessionId(self):
         return self.sessionId
@@ -26,3 +28,15 @@ class User:
     
     def get_conversations(self):
         return self.conversations
+    
+    def get_vector_store(self):
+        return self.vector_store
+    
+    def set_vector_store(self, vector_store):
+        self.vector_store = vector_store
+
+    def set_notes(self, notes):
+        self.notes = notes
+
+    def get_notes(self):
+        return self.notes

@@ -2,6 +2,7 @@ from flask import Blueprint, request, jsonify
 import uuid  # For generating session IDs
 from backend.app.services import youtube_transcript, transcript_extraction
 from backend.app.api.cache import Cache
+from backend.app.services.llm_rag import LLMRAGService
 
 upload_bp = Blueprint('upload', __name__)
 
@@ -26,5 +27,9 @@ def upload_video():
 
     user.set_transcript(transcript_str)
     user.set_transcript_timestamps(transcript_time_stamps)
+
+    llm_rag_service = LLMRAGService()
+    vector_store = llm_rag_service.create_vector_store(transcript_str)
+    user.set_vector_store(vector_store)
 
     return jsonify({"session_id": session_id, "message": "Video processed and transcript stored."})
