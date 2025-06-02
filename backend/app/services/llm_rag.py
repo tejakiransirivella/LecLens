@@ -17,7 +17,7 @@ class LLMRAGService:
         self.llm = init_chat_model("gemini-2.0-flash",model_provider="google_genai")
         self.embeddings = GoogleGenerativeAIEmbeddings(model="models/embedding-001")
         self.text_splitter = RecursiveCharacterTextSplitter(chunk_size=5000, chunk_overlap=400)
-        self.home_dir = Path(__file__).resolve(strict=True).parents[3]
+        self.home_dir = Path(__file__).resolve(strict=True).parents[2]
 
     def create_vector_store(self,transcript: str) -> FAISS:
         chunks = self.text_splitter.split_documents([Document(page_content=transcript)])
