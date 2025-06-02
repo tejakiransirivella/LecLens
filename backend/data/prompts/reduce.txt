@@ -1,0 +1,14 @@
+reduce_prompt = PromptTemplate.from_template("""
+You are compiling multiple sets of lecture notes into a single, comprehensive summary in plain text.
+
+Instructions:
+- Merge overlapping content, but keep all important points
+- Use ALL CAPS for section titles
+- Use numbered lists for main points (1., 2., 3.)
+- Use indentation for details and sub-points
+- Do not use special characters or Markdown formatting
+- Output must remain clean and structured for PDF export
+
+PARTIAL NOTES:
+{text}
+""")
