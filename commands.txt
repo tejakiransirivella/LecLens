@@ -1,0 +1,6 @@
+push local docker images to ECR:
+-------------------------------
+
+1. aws ecr-public get-login-password --region us-east-2 | docker login --username AWS --password-stdin public.ecr.aws/e3y9a0e8
+2. docker tag leclens_backend:latest public.ecr.aws/e3y9a0e8/tejakiran/docker-images:latest 
+3. docker push public.ecr.aws/e3y9a0e8/tejakiran/docker-images:latest
