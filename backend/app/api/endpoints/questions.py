@@ -1,5 +1,5 @@
 from flask import Blueprint, request, jsonify
-from backend.app.services import llm_wrapper
+from backend.app.services.llm_rag import LLMRAGService
 from backend.app.services import relevant_time_stamps
 from backend.app.api.cache import Cache
 
@@ -16,11 +16,14 @@ def ask_question():
 
     # Retrieve transcript
     user = Cache.get_user_cache(session_id)
-    transcript = user.get_transcript()
     transcript_time_stamps = user.get_transcript_timestamps()
+    vector_store = user.get_vector_store()
 
     # Process the question (placeholder for actual logic)
-    response = llm_wrapper.answer_user_query(transcript, question)
+    llm_rag_service = LLMRAGService()
+    response = llm_rag_service.answer_user_query(vector_store, question)
+
+    # response = llm_wrapper.answer_user_query(transcript, question)
     sentence_and_time = relevant_time_stamps.find_relevant_sentences(question, transcript_time_stamps)
 
     conversation = user.get_conversations()

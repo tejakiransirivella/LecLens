@@ -38,7 +38,7 @@ Ensure you have the following installed on your system:
     ```bash 
     cd frontend/flutter_app
     flutter pub get
-    flutter run
+    flutter run -d <browser>
     ```
 ## **🗂️Project Structure**
 

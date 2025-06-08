@@ -1,0 +1,10 @@
+FROM ghcr.io/cirruslabs/flutter:stable AS build
+WORKDIR /leclens/frontend/
+COPY frontend/leclens/ .
+
+RUN flutter pub get && \
+    flutter build web --release
+
+FROM nginx:alpine
+COPY --from=build  /leclens/frontend/build/web /usr/share/nginx/html
+CMD ["nginx", "-g", "daemon off;"]
